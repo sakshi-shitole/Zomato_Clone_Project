@@ -1,5 +1,7 @@
 import express from "express";
 import dotenv from 'dotenv';
+import mongoose from "mongoose";
+mongoose.set('strictQuery', true);
 
 //Database connection
 import ConnectDB from "./database/connection";
@@ -21,13 +23,13 @@ const PORT = 4000;
 
 
 zomato.listen(PORT, () => {
-    //  ConnectDB()
-    //      .then(() => {
-    //         console.log('Server is running !!!');
-    //    })
-    //     .catch((error) => {
-    //        console.log("Server is running, but database connection failed...");
-    //        console.log(error);
-    //   });
-    console.log('Server is running !!!');
+    ConnectDB()
+        .then(() => {
+            console.log('Server is running !!!');
+        })
+        .catch((error) => {
+            console.log("Server is running, but database connection failed...");
+            console.log(error);
+        });
+
 });
